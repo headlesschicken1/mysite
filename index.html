@@ -18,9 +18,16 @@
         <div class="main">
             <div class="widget">
                 <h3>Widget 01</h3>
+                <div class="notepad">
+                    <textarea id = "note-area" name = "message" rows = "20" cols = "40">
+
+                    </textarea>
+                    <p><button id="saveNoteBtn">Save</button></p>
+                </div>
             </div>
             <div class="widget">
                 <h3>Widget 02</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/3vUtRRZG0xY?si=d6PJtZ6fSncJddun" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div class="widget">
                 <h3>Widget 03</h3>
@@ -44,6 +51,20 @@
 
     $("#date").html(mm+sp+dd+sp+yyyy);
 
+    $("#saveNoteBtn").click(function(){
+        var currentNotes = $("#note-area").val();
+        localStorage.setItem("notes", currentNotes);    
+    });
+
+    
+    try {
+    var loadNotes = localStorage.getItem("notes");
+    }
+    catch(err) {
+    var loadNotes = "Enter your notes here and click 'Save'";
+    }
+
+    $("#note-area").val(loadNotes);
 
 </script>
 </html>
